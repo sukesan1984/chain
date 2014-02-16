@@ -18,6 +18,9 @@ class PanelSprite : public Sprite
 {
     const int SIZE = 32;
     Sprite* sprite;
+    bool willRemoved = false;
+    float deltaY = 0;
+    float velocity = 0;
 public:
     //PanelSprite(Sprite* sprite);
     PanelSprite();
@@ -25,8 +28,14 @@ public:
     static PanelSprite* createWithPanelType(int panelType);
     bool initWithSpriteFrameName(const std::string& spriteFrameName);
     
+    void setWillRemoved(bool willRemoved);
+    bool getWillRemoved();
+    
     void setSize(float size);
     void onTap();
+    
+    bool move();
+    void setDeltaY(float deltaY);
     CREATE_FUNC(PanelSprite);
 };
 

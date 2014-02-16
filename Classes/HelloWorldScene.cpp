@@ -76,6 +76,7 @@ bool HelloWorld::init()
     setTouchEnabled(true);
     setTouchMode(Touch::DispatchMode::ONE_BY_ONE);
     
+    this->schedule(schedule_selector(HelloWorld::update));
     return true;
 }
 
@@ -121,3 +122,6 @@ void HelloWorld::onTouchEnded(Touch* touch, cocos2d::Event* event){
     }
 }
 
+void HelloWorld::update(float dt){
+    field->update();
+}

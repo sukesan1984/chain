@@ -67,7 +67,34 @@ void PanelSprite::setSize(float size){
     this->setScale(size / SIZE);
 }
 
+void PanelSprite::setWillRemoved(bool willRemoved){
+    this->willRemoved = willRemoved;
+}
+
+bool PanelSprite::getWillRemoved(){
+    return this->willRemoved;
+}
+
+
 void PanelSprite::onTap(){
     log("onTap");
     log("x: %f, y: %f", this->getPosition().x, this->getPosition().y);
+    this->setWillRemoved(true);
+}
+
+
+//移動量に合わせて移動させて、deltaYを減らす。
+bool PanelSprite::move(){
+    if (deltaY >= -0.0001 && deltaY <= 0.0001 ){
+        return false;
+    }
+    float currentY = this->getPositionY();
+    this->setPositionY(currentY - velocity);
+    deltaY -= velocity;
+    return true;
+}
+
+void PanelSprite::setDeltaY(float deltaY){
+    this->deltaY += deltaY;
+    this->velocity = this->deltaY / 100 * 10;
 }

@@ -26,6 +26,7 @@ public:
     void onTouchBegan(const Point &tap);
     void onTouchMove(Touch* touch);
     void onTouchEnded(Touch* touch);
+    void update();
     Field();
     ~Field();
 };

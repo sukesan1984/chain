@@ -41,3 +41,7 @@ void Field::onTouchMove(Touch* touch){
 void Field::onTouchEnded(Touch* touch){
     log("Field:onTouchEnded");
 }
+
+void Field::update(){
+    panels->update();
+}

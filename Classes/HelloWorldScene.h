@@ -29,6 +29,8 @@ public:
     void onTouchEnded(Touch* touch, cocos2d::Event* event);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    void update(float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
