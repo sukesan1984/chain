@@ -11,18 +11,19 @@
 
 #include <iostream>
 #include "cocos2d.h"
-#include "KTNode.h"
+#include "CoverSprite.h"
 using namespace cocos2d;
 
 class PanelSprite : public Sprite
 {
     const int SIZE = 32;
     Sprite* sprite;
+    CoverSprite* cover;
     bool willRemoved = false;
     float deltaY = 0;
     float velocity = 0;
+    
 public:
-    //PanelSprite(Sprite* sprite);
     PanelSprite();
     ~PanelSprite();
     static PanelSprite* createWithPanelType(int panelType);
@@ -30,12 +31,14 @@ public:
     
     void setWillRemoved(bool willRemoved);
     bool getWillRemoved();
+    void remove();
     
     void setSize(float size);
     void onTap();
     
     bool move();
     void setDeltaY(float deltaY);
+    void update();
     CREATE_FUNC(PanelSprite);
 };
 

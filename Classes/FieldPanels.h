@@ -26,7 +26,7 @@ public:
     void initialize(CCNode* parentNode); //明示的に初期化処理を呼ぶ。
     void restockPanel(CCNode* parentNode);
     void add(PanelSprite* panel); //パネルを追加する。
-    void remove(int index); //inexのパネルを消す。
+    void remove(int index); //indexのパネルを消す。
     void pushRemovedPanel(PanelSprite* panel);
     CCArray* getRemovedPanels();
     void removePanels();

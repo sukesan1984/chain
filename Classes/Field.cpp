@@ -21,9 +21,9 @@ void Field::initialize(){
 }
 
 void Field::onTouchBegan(const Point &tap){
-    if(this->panels->isMoving()){
-        return;
-    }
+    //if(this->panels->isMoving()){
+    //return;
+    //}
     log("Field:onTouchBegan");
     PanelSprite* panel;
     Object* targetObject;

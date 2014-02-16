@@ -118,7 +118,7 @@ void FieldPanels::removePanels(){
         
         //消えるパネルなら消す。
         if(panel->getWillRemoved()){
-            panel->removeFromParentAndCleanup(true);
+            panel->remove();
             this->pushRemovedPanel(panel);
             removedIndexes->addObject(CCInteger::create(count));
         }
@@ -151,9 +151,9 @@ void FieldPanels::movePanels(){
 
 
 void FieldPanels::setMoves(){
-    if(moveState){
-        return;
-    }
+    //if(moveState){
+    //    return;
+    //}
     CCArray* removedPanels = this->getRemovedPanels();
     PanelSprite* removedPanel = NULL;
     CCObject* targetObject1 = NULL;
@@ -175,6 +175,13 @@ void FieldPanels::setMoves(){
 }
 
 void FieldPanels::update(){
+    PanelSprite* panel = NULL;
+    CCObject* targetObject = NULL;
+    int movingPanelsNum = 0;
+    CCARRAY_FOREACH(this, targetObject){
+        panel = (PanelSprite*) targetObject;
+        panel->update();
+    }
     this->removePanels();
     this->restockPanel(this->parentNode);
     this->setMoves();

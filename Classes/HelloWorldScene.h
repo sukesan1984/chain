@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Field.h"
+#include "CoverSprite.h"
 
 class HelloWorld : public cocos2d::Layer
 {

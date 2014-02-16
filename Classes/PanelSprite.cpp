@@ -52,6 +52,9 @@ PanelSprite* PanelSprite::createWithPanelType(int panelType){
     }
     
     if(sprite && sprite->initWithSpriteFrameName((panelName + ".png").c_str())){
+        sprite->cover = CoverSprite::createPanel();
+        sprite->cover->setAnchorPoint(Point(0, 0));
+        sprite->addChild(sprite->cover);
         sprite->autorelease();
         return sprite;
     }
@@ -75,11 +78,15 @@ bool PanelSprite::getWillRemoved(){
     return this->willRemoved;
 }
 
+void PanelSprite::remove(){
+    this->cover->removeFromParentAndCleanup(true);
+    this->removeFromParentAndCleanup(true);
+}
 
 void PanelSprite::onTap(){
     log("onTap");
     log("x: %f, y: %f", this->getPosition().x, this->getPosition().y);
-    this->setWillRemoved(true);
+    this->cover->start();
 }
 
 
@@ -97,4 +104,11 @@ bool PanelSprite::move(){
 void PanelSprite::setDeltaY(float deltaY){
     this->deltaY += deltaY;
     this->velocity = this->deltaY / 100 * 10;
+}
+
+void PanelSprite::update(){
+    this->cover->update();
+    if(this->cover->isFullCovered()){
+        this->setWillRemoved(true);
+    }
 }
