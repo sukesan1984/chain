@@ -12,21 +12,20 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "PanelSprite.h"
+#include "FieldPanels.h"
 #include "KTNode.h"
 using namespace cocos2d;
 
 
 class Field : public KTNode
 {
-    const int WIDTH = 9;
-    const int HEIGHT = 9;
-    const int FIELD_SIZE = 315;
     Node* parentNode;
+    FieldPanels* panels;
 public:
     void initialize();
-    void onTouchBegan(const Point &point);
-    void onTouchMove(const Point &point);
-    void onTouchEnded(const Point &point);
+    void onTouchBegan(Touch* touch);
+    void onTouchMove(Touch* touch);
+    void onTouchEnded(Touch* touch);
     Field(Node* parentNode);
     ~Field();
 };

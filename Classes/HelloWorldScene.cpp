@@ -49,7 +49,7 @@ bool HelloWorld::init()
     this->field = new Field(this);
     field->initialize();
     field->setPosition(FIELD_START_AT);
-    field->setAnchorPoint(ccp(0, 0));
+    field->setAnchorPoint(Point(0, 0));
     field->append(this);
     
     // create menu, it's an autorelease object
@@ -94,7 +94,7 @@ bool HelloWorld::onTouchBegan(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(loc - FIELD_START_AT);
+        this->field->onTouchBegan(touch);
         log("x: %f, y: %f", loc.x, loc.y);
         return true;
     }
@@ -106,7 +106,7 @@ void HelloWorld::onTouchMoved(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(loc - FIELD_START_AT);
+        this->field->onTouchBegan(touch);
         log("move x: %f, y: %f", loc.x, loc.y);
     }
 }
@@ -116,7 +116,7 @@ void HelloWorld::onTouchEnded(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(loc - FIELD_START_AT);
+        this->field->onTouchBegan(touch);
         log("move x: %f, y: %f", loc.x, loc.y);
     }
 }

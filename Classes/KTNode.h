@@ -21,6 +21,7 @@ public:
     void setPosition(const Point &position);
     void setScale(float scale);
     void setAnchorPoint(const Point& anchorPoint);
+    Node* getNode();
     KTNode();
     ~KTNode();
 };

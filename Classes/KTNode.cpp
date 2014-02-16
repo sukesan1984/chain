@@ -31,3 +31,7 @@ void KTNode::setScale(float scale){
 void KTNode::setAnchorPoint(const Point& anchorPoint){
     this->node->setAnchorPoint(anchorPoint);
 }
+
+Node* KTNode::getNode(){
+    return this->node;
+}
