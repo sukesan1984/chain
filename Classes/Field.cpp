@@ -21,11 +21,12 @@ void Field::initialize(){
 }
 
 void Field::onTouchBegan(const Point &tap){
+    if(this->panels->isMoving()){
+        return;
+    }
     log("Field:onTouchBegan");
     PanelSprite* panel;
     Object* targetObject;
-    //Point tap = CCDirector::sharedDirector()->convertToGL( touch->getLocationInView() );
-    //Point tap = touch->getLocation();
     CCARRAY_FOREACH(this->panels, targetObject){
         panel = (PanelSprite*) targetObject;
         if(panel && panel->getBoundingBox().containsPoint(tap)){
@@ -36,10 +37,16 @@ void Field::onTouchBegan(const Point &tap){
 
 void Field::onTouchMove(Touch* touch){
     log("Field:onTouchMove");
+    if(this->panels->isMoving()){
+        return;
+    }
 }
 
 void Field::onTouchEnded(Touch* touch){
     log("Field:onTouchEnded");
+    if(this->panels->isMoving()){
+        return;
+    }
 }
 
 void Field::update(){

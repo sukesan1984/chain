@@ -20,6 +20,8 @@ class FieldPanels : public CCArray{
     const int FIELD_SIZE = 315;
     CCArray* removedPanels;
     bool moveState = false;
+    PanelSprite* createPanel(int indexX, int indexY);
+    Node* parentNode;
 public:
     void initialize(CCNode* parentNode); //明示的に初期化処理を呼ぶ。
     void restockPanel(CCNode* parentNode);
@@ -32,6 +34,7 @@ public:
     void movePanels();
     
     static FieldPanels* create();
+    bool isMoving();
     
     FieldPanels();
     ~FieldPanels();

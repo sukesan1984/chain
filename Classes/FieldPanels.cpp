@@ -16,7 +16,22 @@ FieldPanels::FieldPanels(){
 FieldPanels::~FieldPanels(){
 }
 
+PanelSprite* FieldPanels::createPanel(int indexX, int indexY){
+    int panelType = rand() % 6 + 1;
+    PanelSprite* pSprite = PanelSprite::createWithPanelType(panelType);
+    
+    //float size = PANEL_SIZE * PANEL_SCALE;
+    //float scale = PANEL_SCALE;
+    float size = FIELD_SIZE / WIDTH;
+    pSprite->setSize(size);
+    pSprite->setAnchorPoint(Point(0, 0));
+    // position the sprite on the center of the screen
+    pSprite->setPosition( Point(size * indexX, size * indexY) );
+    return pSprite;
+}
+
 void FieldPanels::initialize(Node* parentNode){
+    this->parentNode = parentNode;
     for(int i = 0; i < WIDTH; i++){
         for(int j = 0; j < HEIGHT; j++){
             int panelType = rand() % 6 + 1;
@@ -42,7 +57,7 @@ void FieldPanels::restockPanel(Node* parentNode){
     
     CCARRAY_FOREACH(removedPanels, targetObject){
         removedPanel = (PanelSprite*) targetObject;
-        int y = 6;
+        int y = HEIGHT;
         CCInteger* count = (CCInteger*) removedCount->objectForKey(removedPanel->getPosition().x);
         //既にその列が消えている場合は、追加する場所がn段上になる。
         if(count){
@@ -53,9 +68,9 @@ void FieldPanels::restockPanel(Node* parentNode){
             removedCount->setObject(CCInteger::create(1),removedPanel->getPosition().x);
         }
         
-        //PanelSprite* pSprite = this->createPanel(floor, int(removedPanel->getPosition().x / (PANEL_SIZE * PANEL_SCALE)), y);
-        //this->add(pSprite);
-        //parentNode->addChild(pSprite);
+        PanelSprite* pSprite = this->createPanel(int(removedPanel->getPosition().x / (FIELD_SIZE / WIDTH)), y);
+        this->add(pSprite);
+        parentNode->addChild(pSprite);
     }
 }
 
@@ -161,7 +176,12 @@ void FieldPanels::setMoves(){
 
 void FieldPanels::update(){
     this->removePanels();
+    this->restockPanel(this->parentNode);
     this->setMoves();
     this->movePanels();
     removedPanels->removeAllObjects();
+}
+
+bool FieldPanels::isMoving(){
+    return this->moveState;
 }
