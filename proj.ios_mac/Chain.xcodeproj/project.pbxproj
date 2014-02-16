@@ -35,6 +35,9 @@
 		252E692418AF4C6000CD90E9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E692318AF4C6000CD90E9 /* AdSupport.framework */; };
 		252E692618AF4C6900CD90E9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E692518AF4C6900CD90E9 /* AVFoundation.framework */; };
 		252E692818AF4C6E00CD90E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E692718AF4C6E00CD90E9 /* StoreKit.framework */; };
+		252E692C18AF68B600CD90E9 /* PanelSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252E692A18AF68B600CD90E9 /* PanelSprite.cpp */; };
+		252E692F18B080D700CD90E9 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252E692D18B080D700CD90E9 /* Field.cpp */; };
+		252E693318B085C500CD90E9 /* KTNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252E693118B085C500CD90E9 /* KTNode.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -286,6 +289,12 @@
 		252E692318AF4C6000CD90E9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		252E692518AF4C6900CD90E9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		252E692718AF4C6E00CD90E9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		252E692A18AF68B600CD90E9 /* PanelSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelSprite.cpp; path = ../Classes/PanelSprite.cpp; sourceTree = "<group>"; };
+		252E692B18AF68B600CD90E9 /* PanelSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelSprite.h; path = ../Classes/PanelSprite.h; sourceTree = "<group>"; };
+		252E692D18B080D700CD90E9 /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../Classes/Field.cpp; sourceTree = "<group>"; };
+		252E692E18B080D700CD90E9 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Field.h; path = ../Classes/Field.h; sourceTree = "<group>"; };
+		252E693118B085C500CD90E9 /* KTNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KTNode.cpp; path = ../Classes/KTNode.cpp; sourceTree = "<group>"; };
+		252E693218B085C500CD90E9 /* KTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KTNode.h; path = ../Classes/KTNode.h; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -403,10 +412,14 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				252E693018B085AC00CD90E9 /* Framework */,
+				252E692918AF68A700CD90E9 /* panel */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				252E692D18B080D700CD90E9 /* Field.cpp */,
+				252E692E18B080D700CD90E9 /* Field.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -440,6 +453,24 @@
 				1AC6FB13180E9839004C840B /* libluabindings iOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		252E692918AF68A700CD90E9 /* panel */ = {
+			isa = PBXGroup;
+			children = (
+				252E692A18AF68B600CD90E9 /* PanelSprite.cpp */,
+				252E692B18AF68B600CD90E9 /* PanelSprite.h */,
+			);
+			name = panel;
+			sourceTree = "<group>";
+		};
+		252E693018B085AC00CD90E9 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				252E693118B085C500CD90E9 /* KTNode.cpp */,
+				252E693218B085C500CD90E9 /* KTNode.h */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -789,11 +820,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252E693318B085C500CD90E9 /* KTNode.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				252E692C18AF68B600CD90E9 /* PanelSprite.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				252E692F18B080D700CD90E9 /* Field.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
