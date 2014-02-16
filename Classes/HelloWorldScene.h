@@ -6,6 +6,11 @@
 
 class HelloWorld : public cocos2d::Layer
 {
+private:
+    const float FIELD_START_AT_X = 2.5;
+    const float FIELD_START_AT_Y = 104;
+    const Point FIELD_START_AT = Point(FIELD_START_AT_X, FIELD_START_AT_Y);
+    Field* field;
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
@@ -16,6 +21,12 @@ public:
     // a selector callback
     void menuCloseCallback(Object* pSender);
     
+    
+    // touch handling
+    
+    bool onTouchBegan(Touch* touch, cocos2d::Event* event);
+    void onTouchMoved(Touch* touch, cocos2d::Event* event);
+    void onTouchEnded(Touch* touch, cocos2d::Event* event);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };

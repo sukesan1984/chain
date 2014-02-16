@@ -24,6 +24,9 @@ class Field : public KTNode
     Node* parentNode;
 public:
     void initialize();
+    void onTouchBegan(const Point &point);
+    void onTouchMove(const Point &point);
+    void onTouchEnded(const Point &point);
     Field(Node* parentNode);
     ~Field();
 };

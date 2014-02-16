@@ -29,3 +29,18 @@ void Field::initialize(){
          }
     }
 }
+
+void Field::onTouchBegan(const Point &point){
+    log("Field:onTouchBegan");
+    log("Field x: %f, y: %f", point.x, point.y);
+}
+
+void Field::onTouchMove(const Point &point){
+    log("Field:onTouchMove");
+    log("Field(move) x: %f, y: %f", point.x, point.y);
+}
+
+void Field::onTouchEnded(const Point &point){
+    log("Field:onTouchEnded");
+    log("Field(end) x: %f, y: %f", point.x, point.y);
+}

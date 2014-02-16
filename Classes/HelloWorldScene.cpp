@@ -46,9 +46,9 @@ bool HelloWorld::init()
     SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("panels.plist");
     
     
-    Field* field = new Field(this);
+    this->field = new Field(this);
     field->initialize();
-    field->setPosition(Point(2.5, 104));
+    field->setPosition(FIELD_START_AT);
     field->setAnchorPoint(ccp(0, 0));
     field->append(this);
     
@@ -72,6 +72,10 @@ bool HelloWorld::init()
     // add the label as a child to this layer
     this->addChild(label, 1);
     
+    
+    setTouchEnabled(true);
+    setTouchMode(Touch::DispatchMode::ONE_BY_ONE);
+    
     return true;
 }
 
@@ -84,3 +88,36 @@ void HelloWorld::menuCloseCallback(Object* pSender)
     exit(0);
 #endif
 }
+
+bool HelloWorld::onTouchBegan(Touch* touch, cocos2d::Event* event){
+    log("onTouchBegan");
+    Point loc;
+    if(touch) {
+        loc = touch->getLocation();
+        this->field->onTouchBegan(loc - FIELD_START_AT);
+        log("x: %f, y: %f", loc.x, loc.y);
+        return true;
+    }
+    return false;
+}
+
+void HelloWorld::onTouchMoved(Touch* touch, cocos2d::Event* event){
+    log("onTouchMoved");
+    Point loc;
+    if(touch) {
+        loc = touch->getLocation();
+        this->field->onTouchBegan(loc - FIELD_START_AT);
+        log("move x: %f, y: %f", loc.x, loc.y);
+    }
+}
+
+void HelloWorld::onTouchEnded(Touch* touch, cocos2d::Event* event){
+    log("onTouchEnded");
+    Point loc;
+    if(touch) {
+        loc = touch->getLocation();
+        this->field->onTouchBegan(loc - FIELD_START_AT);
+        log("move x: %f, y: %f", loc.x, loc.y);
+    }
+}
+
