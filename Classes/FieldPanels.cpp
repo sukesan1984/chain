@@ -24,14 +24,14 @@ void FieldPanels::initialize(Node* parentNode){
             panel->setSize(FIELD_SIZE / WIDTH);
             panel->setPosition(Point(x, y));
             panel->setAnchorPoint(Point(0, 0));
-            panel->append(parentNode);
+            parentNode->addChild(panel);
             this->add(panel);
         }
     }
 }
 
 void FieldPanels::add(PanelSprite* panel){
-    this->addObject((Object*) panel->getNode());
+    this->addObject((Object*) panel);
 }
 
 void FieldPanels::remove(int index){

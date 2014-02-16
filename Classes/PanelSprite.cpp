@@ -8,15 +8,19 @@
 
 #include "PanelSprite.h"
 
-PanelSprite::PanelSprite(Sprite* sprite){
-    this->sprite = sprite;
-    this->node->addChild(this->sprite);
+//PanelSprite::PanelSprite(Sprite* sprite){
+//    this->sprite = sprite;
+//    this->node->addChild(this->sprite);
+//}
+
+PanelSprite::PanelSprite(){
 }
 
 PanelSprite::~PanelSprite(){
 }
 
 PanelSprite* PanelSprite::createWithPanelType(int panelType){
+    PanelSprite* sprite = new PanelSprite();
     std::string panelName;
     switch (panelType) {
         case 0:
@@ -47,12 +51,23 @@ PanelSprite* PanelSprite::createWithPanelType(int panelType){
             break;
     }
     
-    Sprite* sprite = Sprite::createWithSpriteFrameName((panelName + ".png").c_str());
-    sprite->setAnchorPoint(ccp(0, 0));
-    PanelSprite* panelSprite = new PanelSprite(sprite);
-    return panelSprite;
+    if(sprite && sprite->initWithSpriteFrameName((panelName + ".png").c_str())){
+        sprite->autorelease();
+        return sprite;
+    }
+    CC_SAFE_DELETE(sprite);
+    return NULL;
+}
+
+bool PanelSprite::initWithSpriteFrameName(const std::string &spriteFrameName){
+    return Sprite::initWithSpriteFrameName(spriteFrameName);
 }
 
 void PanelSprite::setSize(float size){
     this->setScale(size / SIZE);
+}
+
+void PanelSprite::onTap(){
+    log("onTap");
+    log("x: %f, y: %f", this->getPosition().x, this->getPosition().y);
 }

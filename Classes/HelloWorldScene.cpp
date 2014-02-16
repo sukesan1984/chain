@@ -46,11 +46,11 @@ bool HelloWorld::init()
     SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("panels.plist");
     
     
-    this->field = new Field(this);
+    this->field = new Field();
     field->initialize();
     field->setPosition(FIELD_START_AT);
     field->setAnchorPoint(Point(0, 0));
-    field->append(this);
+    this->addChild(field);
     
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
@@ -94,7 +94,7 @@ bool HelloWorld::onTouchBegan(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(touch);
+        this->field->onTouchBegan(loc - FIELD_START_AT);
         log("x: %f, y: %f", loc.x, loc.y);
         return true;
     }
@@ -106,7 +106,7 @@ void HelloWorld::onTouchMoved(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(touch);
+        //this->field->onTouchBegan(loc - FIELD_START_AT);
         log("move x: %f, y: %f", loc.x, loc.y);
     }
 }
@@ -116,7 +116,7 @@ void HelloWorld::onTouchEnded(Touch* touch, cocos2d::Event* event){
     Point loc;
     if(touch) {
         loc = touch->getLocation();
-        this->field->onTouchBegan(touch);
+        //this->field->onTouchBegan(touch);
         log("move x: %f, y: %f", loc.x, loc.y);
     }
 }

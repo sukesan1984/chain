@@ -14,15 +14,20 @@
 #include "KTNode.h"
 using namespace cocos2d;
 
-class PanelSprite : public KTNode
+class PanelSprite : public Sprite
 {
     const int SIZE = 32;
     Sprite* sprite;
 public:
-    PanelSprite(Sprite* sprite);
+    //PanelSprite(Sprite* sprite);
+    PanelSprite();
     ~PanelSprite();
     static PanelSprite* createWithPanelType(int panelType);
+    bool initWithSpriteFrameName(const std::string& spriteFrameName);
+    
     void setSize(float size);
+    void onTap();
+    CREATE_FUNC(PanelSprite);
 };
 
 #endif /* defined(__Chain__PanelSprite__) */

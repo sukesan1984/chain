@@ -13,7 +13,7 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
-class KTNode{
+class KTNode : public Object{
 protected:
     Node* node;
 public:

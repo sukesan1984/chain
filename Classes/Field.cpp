@@ -8,8 +8,7 @@
 
 #include "Field.h"
 
-Field::Field(Node* parentNode){
-    this->parentNode = parentNode;
+Field::Field(){
 }
 
 Field::~Field(){
@@ -18,11 +17,21 @@ Field::~Field(){
 void Field::initialize(){
     panels = FieldPanels::create();
     panels->retain();
-    panels->initialize(this->getNode());
+    panels->initialize(this);
 }
 
-void Field::onTouchBegan(Touch* touch){
+void Field::onTouchBegan(const Point &tap){
     log("Field:onTouchBegan");
+    PanelSprite* panel;
+    Object* targetObject;
+    //Point tap = CCDirector::sharedDirector()->convertToGL( touch->getLocationInView() );
+    //Point tap = touch->getLocation();
+    CCARRAY_FOREACH(this->panels, targetObject){
+        panel = (PanelSprite*) targetObject;
+        if(panel && panel->getBoundingBox().containsPoint(tap)){
+            panel->onTap();
+        }
+    }
 }
 
 void Field::onTouchMove(Touch* touch){

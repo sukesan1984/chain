@@ -17,16 +17,16 @@
 using namespace cocos2d;
 
 
-class Field : public KTNode
+class Field : public Node
 {
     Node* parentNode;
     FieldPanels* panels;
 public:
     void initialize();
-    void onTouchBegan(Touch* touch);
+    void onTouchBegan(const Point &tap);
     void onTouchMove(Touch* touch);
     void onTouchEnded(Touch* touch);
-    Field(Node* parentNode);
+    Field();
     ~Field();
 };
 
